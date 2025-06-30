@@ -292,6 +292,7 @@ function deleteGame() {
     setCookie("time",9,-1);
     setCookie("sacupgrade",9,-1);
     setCookie("packetspawn",1,-1);
+    setCookie("makerprices",1,-1);
     alert("Deleted!");
     location.reload();
 }
