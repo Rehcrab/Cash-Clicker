@@ -106,6 +106,10 @@ if (getCookie("money")!="") {
     for (i=0;i<thingies.length;i++){
         thingies[i][6]=Number(boostmakerx[i]);
     }
+    var makerpricesx=getCookie("makerprices").split(",");
+    for (i=0;i<thingies.length;i++){
+        thingies[i][0]=Number(makerpricesx[i]);
+    }
     if (offlineMoney!=0){
        money+=getMoneyEarned("second")*(timeNow-timeAgo)*offlineMoney/1000;
        money+=getMoneyEarned("second")*(timeNow-timeAgo)*offlineMoney/1000;
@@ -223,6 +227,7 @@ function saveGame() {
     let sacupgradecookie="";
     let nummakercookie="";
     let boostmakercookie="";
+    let makerpricescookie=""
     for (i=0;i<upgrades.length;i++) {
         upgradecookie+=upgrades[i][2];
         if (i!=upgrades.length-1) {
@@ -243,8 +248,14 @@ function saveGame() {
     }
     for (i=0;i<thingies.length;i++) {
         boostmakercookie+=thingies[i][6];
-        if (i!=upgrades.length-1) {
+        if (i!=thingies.length-1) {
         boostmakercookie+=","
+        }
+    }
+    for (i=0;i<thingies.length;i++) {
+        makerpricescookie+=thingies[i][0];
+        if (i!=thingies.length-1) {
+        makerpricescookie+=","
         }
     }
     const hatime=new Date();
@@ -262,6 +273,7 @@ function saveGame() {
     setCookie("time",hatime.getTime(),10000);
     setCookie("packetspawn",moneyPacketSpawn,10000);
     setCookie("packetspawnboost",packetSpawnBoost,10000);
+    setCookie("makerprices",makerpricescookie,10000);
 }
 function deleteGame() {
     if (!confirm("Are you sure you want to delete all your progress?")) {
