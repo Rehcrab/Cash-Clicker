@@ -486,3 +486,5 @@ setInterval(function(){
    }
    }
 },1000);
+console.log("%cHELLO HACKER.", "color:white; background-color:red;padding:5px;");
+console.log("%cWhat would you like to hack in today?", "color:red;");
