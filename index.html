@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css"/>
+        <title>CashClicker</title>
+        <link rel="icon" href="bear.png" type="image/png">
+    </head>
+    <body id="body">
+        <h1>CashClicker</h1>
+        <p id="money">$0</p>
+        <p id="moneypersecond">Money per Second: 0</p>
+        <p id="moneyperclick">Money per Click: 1</p>
+        <p id="sacrificepoints">Sacrifice Points: 0</p>
+        <p id="sacrificemultiplier">Sacrifice Bonus: 0%</p>
+        <p id="boost">Current Boosts: </p>
+        <button class="musicbutton" onclick="play_audio()">Play Music</button>
+        <button id="sacrifice" onclick="sacrifice()">Sacrifice Everything for 0 Sacrifice Points</button>
+        <button id="save" onclick="saveGame()">Save Game</button>
+        <br>
+        <button id="delete" onclick="deleteGame()">Delete Game</button>
+        <audio class="my_audio" controls preload="none" style="display: none;" loop>
+            <source src="music.mp3" type="audio/mpeg">
+        </audio>
+        <img src="cashimage.png"alt="money" onclick="clickedMoney()"id="moneyimage"/>
+        <br><br><br><br><br><br><br><br><br><br><br>
+        <div id="upgrades">
+            <h2>Upgrades</h2>
+            <div class="upgrade"onclick="buyUpgrade(0)">
+            <p>Cost: $100, money per click doubled!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(1)">
+                <p>Cost: $500, Lemonade Stands earn doubled money!</p>
+                </div>
+            <div class="upgrade"onclick="buyUpgrade(2)">
+                <p>Cost: $1000, ALL money earned+50%!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(3)">
+                <p>Cost: $10000, ALL money earned+50%!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(4)">
+                <p>Cost: $50000, Farms earn doubled money!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(5)">
+                <p>Cost: $500000, Factories earn doubled money!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(6)">
+                <p>Cost: $999999, ALL money earned+10%!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(7)">
+                <p>Cost: $999999, ALL money earned+10%!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(8)">
+                <p>Cost: $999999, ALL money earned+10%!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(9)">
+                <p>Cost: $999999, ALL money earned+10%!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(10)">
+                <p>Cost: $999999, ALL money earned+10%!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(11)">
+                <p>Cost: $999999, ALL money earned+10%!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(12)">
+                <p>Cost: $999999, ALL money earned+10%!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(13)">
+                <p>Cost: $2 million, money per second doubled!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(14)">
+                <p>Cost: $15 million, Diamond Mines earn doubled money!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(15)">
+                <p>Cost: $50 million, ALL money earned doubled!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(16)">
+                <p>Cost: $200 million, Companies earn doubled money!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(17)">
+                <p>Cost: $3 billion, Film Studios earn doubled money!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(18)">
+                <p>Cost: $10 billion, ALL money earned doubled!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(19)">
+                <p>Cost: $50 billion, ALL money earned tripled!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(20)">
+                <p>Cost: $100 billion, Cursors earn tripled money!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(21)">
+                <p>Cost: $100 billion, Lemonade Stands earn quintupled money!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(22)">
+                <p>Cost: $250 billion, all Quantum MoneyMakers earn tripled money!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(23)">
+                <p>Cost: $500 billion, unlock MoneyPackets that give rewards when clicked!</p>
+            </div>
+            <div class="upgrade"onclick="buyUpgrade(24)">
+                <p>Cost: $1 trillion, ALL money earned tripled!</p>
+            </div>
+        </div>
+        <div id="rightside">
+            <div id="moneymakers">
+            <h2>Money Makers</h2>
+            <div class="maker"onclick="buyMaker(0)">
+                <p>Cursor. Cost: $100, money per click +1! Owned: 0</p>
+            </div>
+            <div class="maker"onclick="buyMaker(1)">
+                <p>Lemonade Stand. Cost: $100, money per second +1! Owned: 0</p>
+            </div>
+            <div class="maker"onclick="buyMaker(2)">
+                <p>Farm. Cost: $1000, money per second +8! Owned: 0</p>
+            </div>
+            <div class="maker"onclick="buyMaker(3)">
+                <p>Factory. Cost: $30000, money per second +100! Owned: 0</p>
+            </div>
+            <div class="maker"onclick="buyMaker(4)">
+                <p>Diamond Mine. Cost: $999999, money per second +1000! Owned: 0</p>
+            </div>
+            <div class="maker"onclick="buyMaker(5)">
+                <p>Company. Cost: $15 million, money per second +8000! Owned: 0</p>
+            </div>
+            <div class="maker"onclick="buyMaker(6)">
+                <p>Film Studio. Cost: $200 million, money per second +75000! Owned: 0</p>
+            </div>
+            <div class="maker"onclick="buyMaker(7)">
+                <p>Quantum Hacking Rig. Cost: $10 billion, money per second +2 million! Owned: 0</p>
+            </div>
+            <div class="maker"onclick="buyMaker(8)">
+                <p>Quantum Spamming Rig. Cost: $10 billion, money per click +400000! Owned: 0</p>
+            </div>
+        </div>
+       <div id="sacrificeupgrades">
+            <h2>Sacrifice Point Upgrades</h2>
+            <p>Note: Buying upgrades with sacrifice points won't affect your multiplier.</p>
+            <div class="sacupgrade"onclick="buySacUpgrade(0)">
+                <p>Cost: 2 sacrifice points, ALL money earned doubled!</p>
+            </div>
+            <div class="sacupgrade"onclick="buySacUpgrade(1)">
+                <p>Cost: 2 sacrifice points, generates 5% of regular cash per second when offline!</p>
+            </div>
+            <div class="sacupgrade"onclick="buySacUpgrade(2)">
+                <p>Cost: 10 sacrifice points, ALL money earned doubled!</p>
+            </div>
+            <div class="sacupgrade"onclick="buySacUpgrade(3)">
+                <p>Cost: 10 sacrifice points, generates an extra 5% of regular cash per second when offline!</p>
+            </div>
+            <div class="sacupgrade"onclick="buySacUpgrade(4)">
+                <p>Cost: 200 sacrifice points, generates an extra 5% of regular cash per second when offline!</p>
+            </div>
+        </div>
+        </div>
+        <script src="music.js"></script>
+        <script src="script.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </body>
+</html>

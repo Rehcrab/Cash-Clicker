@@ -1,0 +1,30 @@
+#moneyimage {
+    width: 300px;
+    height: 200px;
+    position:absolute;
+    top:350px;
+    left:10px; 
+}
+#rightside {
+    position: absolute;
+    left: 500px;
+    top: 50px;
+}
+#boost{
+  text-wrap: balanced;
+  width: 450px;
+}
+ .packet {
+    width: 100px;
+  height: 100px;
+  font-size: 30px;
+  background-color: lime;
+  animation-name: example;
+  animation-duration: 5s;
+}
+
+@keyframes example {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
