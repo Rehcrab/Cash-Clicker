@@ -16,7 +16,8 @@ var moneySecondMulti=1;
 var sacrificeBoost=1;
 var offlineMoney=0;
 var sacrificePoints=0;
-var moneyPacketSpawn=0;
+var moneyPacketSpawn=10000;
+var packetSpawnBoost=1;
 var packetOnScreen=false;
 var packetTime=5000;
 var packetClickBoost=1;
@@ -54,6 +55,8 @@ var sacUpgrades=[
     [10,"moneyClickMulti*=2; moneySecondMulti*=2;",1],
     [10,"offlineMoney+=0.05",1],
     [200,"offlineMoney+=0.05",1],
+    [200,"packetSpawnBoost/=2",1],
+    [3000,"offlineMoney+=0.10",1],
 ]
 var thingies=[
     [100,"click",1,"Cursor", "money per click +",0,1],
@@ -65,6 +68,7 @@ var thingies=[
     [200000000,"second",75000,"Film Studio", "money per second +",0,1],
     [10000000000,"second",2000000,"Quantum Hacking Rig", "money per second +",0,1],
     [10000000000,'click',500000,"Quantum Spamming Rig", "money per click +",0,1],
+    [1000000000000,'second',70000000,"World Bank", "money per second +",0,1],
 ];
 var moneyEarnedThingy=0;
 if (getCookie("money")!="") {
@@ -77,6 +81,7 @@ if (getCookie("money")!="") {
     sacrificeBoost=Number(getCookie("sacboost"));
     offlineMoney=Number(getCookie("offlinemoney"));
     moneyPacketSpawn=Number(getCookie("packetspawn"));
+    packetSpawnBoost=Number(getCookie("packetspawnboost"))
     var timeAgo=Number(getCookie("time"));
     var upgradesx=getCookie("upgrade");
     var splitted=upgradesx.split(",");
@@ -127,6 +132,7 @@ packetClickBoost=1;
 packetSecondBoost=1;
 offlineMoney=0;
 moneyPacketSpawn=0;
+packetSpawnBoost=1;
 thingies=[
     [100,"click",1,"Cursor", "money per click +",0,1],
     [100,"second",1,"Lemonade Stand", "money per second +",0,1],
@@ -255,6 +261,7 @@ function saveGame() {
     setCookie("boostmaker",boostmakercookie,10000);
     setCookie("time",hatime.getTime(),10000);
     setCookie("packetspawn",moneyPacketSpawn,10000);
+    setCookie("packetspawnboost",packetSpawnBoost,10000);
 }
 function deleteGame() {
     if (!confirm("Are you sure you want to delete all your progress?")) {
@@ -447,7 +454,7 @@ setInterval(function(){
 },10);
 setInterval(function(){
    if (moneyPacketSpawn!=0&&!packetOnScreen){
-    if (Math.floor(Math.random()*moneyPacketSpawn)+1==moneyPacketSpawn) {
+    if (Math.floor(Math.random()*moneyPacketSpawn*packetSpawnBoost)+1==moneyPacketSpawn*packetSpawnBoost) {
         packetOnScreen=true;
        var packet=document.createElement("div");
        packet.innerText="Money Packet!";
