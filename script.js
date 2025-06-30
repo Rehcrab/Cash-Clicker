@@ -67,7 +67,7 @@ var thingies=[
     [15000000,"second",8000,"Company", "money per second +",0,1],
     [200000000,"second",75000,"Film Studio", "money per second +",0,1],
     [10000000000,"second",2000000,"Quantum Hacking Rig", "money per second +",0,1],
-    [10000000000,'click',500000,"Quantum Spamming Rig", "money per click +",0,1],
+    [10000000000,'click',300000,"Quantum Spamming Rig", "money per click +",0,1],
     [1000000000000,'second',70000000,"World Bank", "money per second +",0,1],
 ];
 var moneyEarnedThingy=0;
@@ -302,7 +302,7 @@ function updateStuff() {
     moneySecondHTML.innerText="Money per Second: "+formatNumber(getMoneyEarned("second"));
     sacrificeButtonHTML.innerText="Sacrifice Everything for " + Math.floor(Math.cbrt(lifetimemoney/1000000000000)) + " Sacrifice Points";
     sacrificePointsHTML.innerText="Sacrifice Points: "+sacrificePoints;
-    sacrificeMultiHTML.innerText="Sacrifice Bonus: "+(sacrificeBoost-1)*100+"%"
+    sacrificeMultiHTML.innerText="Sacrifice Bonus: "+Math.round((sacrificeBoost-1)*100)+"%"
     for (i=0;i<thingies.length;i++){
         if (thingies[i][1]=="click") {
             makersHTML[i].innerText=thingies[i][3]+". Cost: $"+formatNumber(thingies[i][0])+", "+thingies[i][4]+formatNumber(thingies[i][2]*thingies[i][6]*moneyClickMulti*sacrificeBoost*packetClickBoost)+"! Owned: "+thingies[i][5];
@@ -486,4 +486,3 @@ setInterval(function(){
    }
    }
 },1000);
-
