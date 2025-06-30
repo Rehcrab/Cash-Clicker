@@ -255,7 +255,6 @@ function saveGame() {
     setCookie("boostmaker",boostmakercookie,10000);
     setCookie("time",hatime.getTime(),10000);
     setCookie("packetspawn",moneyPacketSpawn,10000);
-    alert("Saved!");
 }
 function deleteGame() {
     if (!confirm("Are you sure you want to delete all your progress?")) {
